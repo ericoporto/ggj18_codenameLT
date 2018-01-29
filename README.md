@@ -8,21 +8,25 @@ whole project was mine. So just to be clear, I had NEVER made a game in lua and 
 
 # The libraries
 
+We can't invent the wheel that many times, so besides using **love2d** and **lua**, libraries were used
+to ease development.
+
 ## [hump](https://github.com/vrld/hump) 
 
 **hump** was used to provide ***gamestates*** which were used for providing the title screen, 
 the credits, the game and the cutscene. 
 
 It's important to notice that each state has no information on the other (unless using globals),
-so for example, to switch state, you have to ask the main.lua, a function was built to deal with this.
+so for example, to switch state, you have to ask the `main.lua`, a function was built to deal with this.
 
 hump also provided Timers, which was used to prevent an input in dialog boxes from skipping additional 
-dialogs. Other tools from hump were not used.
+dialogs. Other tools from hump were not used. The Camera is also provided by hump and we attached it to
+the player sprite.
 
 ## Proxies
 
 One liners were provided to ease Music and Image loading from correponding assets folder. 
-They are in main.lua, and allow stuff like Music.music_name:play() to happen.
+They are in `main.lua`, and allow stuff like `Music.music_name:play()` to happen.
 
 ## [STI](https://github.com/karai17/Simple-Tiled-Implementation) 
 
@@ -55,6 +59,32 @@ game folder and directly be used in game, skipping any import/export workflow.
 One of the artists was converted in game designer, so to allow this workflow to happen, **Tiled** was used.
 The game was developed in Tiled and from the maps data, the engine code was built to allow them to render
 what was idealized. At least that was the plan.
+
+## main.lua
+
+The main code deals with initializing everything (terebi, game states, load assets, and push shaders), 
+creates a function to provide access to game states, set the initial state to the StartScreen and unifies 
+the keyboard and joystick input in a single interface that can be pooled.
+
+## Game.lua
+
+The actual game. The `init` function starts the game and sets the level to 1. Once each level is loaded,
+the map is loaded through sti and objects in the map are replaced by entities: the `Player` receives the 
+player entity, `ennemySpawner` (with typo TM) receives the agents and they are disabled, the itemSpawner 
+are removed and the entities are inserted too. All entities created are inserted in a table called `sprite_list`,
+a new layer is created in the game map, it's draw function is replaced by one to draw the entities and this 
+layer is then inserted before the foreground layer, allowing for everything to be drawn by a single `map:draw()`.
+
+The draw code for the dialog box is only drawn if the local variable `screen_msg` has a valid string.
+
+The update function deals with all the game logic: makes the player be followed by agents, checks for collision
+between the player and the items and the exit point.
+
+## other files (*.lua)
+
+The cutscene, credits and start screen are really concise and can be easily understood by code. A waitforbutton library
+was created but not used. A Character entity and Item entity were created to deal with those objects: postion, size,
+animation and direction.
 
 # What went wrong 
 
