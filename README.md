@@ -1,6 +1,7 @@
 # Codename-LT
 
-Codename-LT source here is the product of 48h of development with an awesome team of people.
+Codename-LT source here is the product of 48h of development with an awesome team of people from the [VACAROXA](https://www.padrim.com.br/vacaroxa). 
+Find them on [twitter looking the Hashtag](https://twitter.com/hashtag/vacaroxa?src=hash) or follow [@estudiovacaroxa](https://twitter.com/estudiovacaroxa).
 
 This README tries to explain only the **source code** of the game. The not great decision of
 making a game engine, in a language I had only used for 2h in the previous sunday, and riskying the 
@@ -124,7 +125,8 @@ and shipped fast.
 
 # Future development
 
-The game code is expected to improve on [the repository used during the jam](https://github.com/RafaelGiordanno/ggj18zodiac),
+The game code is expected to improve on [here after the global game jam](https://github.com/RafaelGiordanno/ggj18zodiac), in [@rafaelgiordanno](https://twitter.com/rafaelgiordanno)'s github,
 and the original [boilerplate code](https://github.com/ericoporto/myFirstLove) can be found here if any game wants to build
-on top - it lacks some used libraries.
+on top - it lacks some libraries used in this 'final' game code.
 
+*This readme and this not really working code is written by [@eri0o](https://twitter.com/eri0o). If anything is wrong with this text, tell me.*
