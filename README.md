@@ -16,9 +16,20 @@ So just to be clear, I had NEVER made a game in lua and this was the first attem
 I feel really sad for my team members but the learning experience for me was gigantic. Also I loved the memes.
 So let`s dive in the code.
 
+# Wait, what is Love2d and Lua ?
+
+**Lua** is a scripting language that is really good at being plugged in existing C++ code and exposing it
+like an API, to offer script functionality: imagine you built something like Autocad and forgot to 
+build a console to offer advanced functionality, Lua is really good for that. I understand that Lua
+doesn't aim to enable pure feature complete Lua development.
+
+**Love2d** is a framework for game development. Love2d is not built in Lua, it's built in C++ with SDL and 
+exposes an API with an attached Lua interpreter. Porting your game to a platform, means essentially porting
+Love2d to that platform. 
+
 # The libraries
 
-We can't invent the wheel that many times, so besides using **love2d** and **lua**, libraries were used
+We can't invent the wheel that many times, so besides using **Love2d** and **Lua**, libraries were used
 to ease development.
 
 ## [hump](https://github.com/vrld/hump) 
@@ -125,11 +136,11 @@ from code (without a IDE) is great. **Visual Studio Code**, with lua plugin, was
 machine and provided a really comfortable coding experience since it's the code editor I use for *JavaScript* development.
 
 Love2d is also VERY forgiving, the drawing code is mostly a mess, but everything just works. Love2d also can be easily
-run in Linux, Windows and OSX, so your game is already multi platform. I also liked how easily shaders can be loaded
-and ran in love2d, so I added shaders in almost all game states.
+run in Linux, Windows and OSX, so your game is already multi platform - for x86 computers. I also liked how easily 
+shaders can be loaded and ran in love2d, so I added shaders in almost all game states.
 
 I am very sad to not be able to finish the game code in jam time, but I think the learning experience was really a valid
-one. I felt **lua** with **love2d** can be actually used in a 2d small commercial game project that needs to be iterated
+one. I felt **Lua** with **Love2d** can be actually used in a 2d small commercial game project that needs to be iterated
 and shipped fast.
 
 # Future development
