@@ -621,8 +621,8 @@ return {
       objects = {
         {
           id = 5,
-          name = "triggerDialog",
-          type = "",
+          name = "triggerEvent",
+          type = "trigger",
           shape = "rectangle",
           x = 58.5,
           y = 195.166,
@@ -632,11 +632,7 @@ return {
           gid = 219,
           visible = true,
           properties = {
-            ["ennemyType"] = "idle",
-            ["id"] = "0",
-            ["msg"] = "-Hey! & -They know about your project! You have to go! Avoid The agents!",
-            ["msgfr"] = "-Ils savent sur LE projet! Evitez les agents! Vaszyy!!!",
-            ["spawnEnnemy"] = 0,
+            ["runLuaChain"] = "Say('-Hey!'),\nSay('-They know about your project! You have to go! Avoid The agents!'),\ncloseSay(),\nSpawnEnemy(0)\n",
             ["type"] = "trigger"
           }
         },

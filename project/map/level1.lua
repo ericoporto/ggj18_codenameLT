@@ -567,6 +567,34 @@ return {
           gid = 903,
           visible = true,
           properties = {}
+        },
+        {
+          id = 6,
+          name = "planta",
+          type = "",
+          shape = "rectangle",
+          x = 45.3333,
+          y = 142.667,
+          width = 192,
+          height = 192,
+          rotation = 0,
+          gid = 898,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 7,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 208,
+          y = 281.167,
+          width = 192,
+          height = 192,
+          rotation = 0,
+          gid = 900,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -597,21 +625,17 @@ return {
         {
           id = 2,
           name = "triggerDialog",
-          type = "",
+          type = "trigger",
           shape = "rectangle",
           x = 48.5,
-          y = 254,
-          width = 56.6666,
-          height = 60,
+          y = 260,
+          width = 60.1666,
+          height = 66,
           rotation = 0,
           gid = 219,
           visible = true,
           properties = {
-            ["ennemyType"] = "idle",
-            ["id"] = "0",
-            ["msg"] = "-Atention Susan! Go to your desk, take the files and get out!",
-            ["msgfr"] = "-Attention Susan! Allez a votre bureau, prenez les fichiers et sortez!\n",
-            ["spawnEnnemy"] = 0,
+            ["runLuaChain"] = "Say('-Atention Susan! Go to your desk, take the files and get out!'),\ncloseSay(),\nSpawnEnemy(0)",
             ["type"] = "trigger"
           }
         },
@@ -657,34 +681,6 @@ return {
           width = 0,
           height = 0,
           rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 6,
-          name = "planta",
-          type = "",
-          shape = "rectangle",
-          x = 45.3333,
-          y = 142.667,
-          width = 192,
-          height = 192,
-          rotation = 0,
-          gid = 898,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 7,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 208,
-          y = 281.167,
-          width = 192,
-          height = 192,
-          rotation = 0,
-          gid = 900,
           visible = true,
           properties = {}
         },

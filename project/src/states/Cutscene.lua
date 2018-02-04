@@ -16,6 +16,8 @@ Cutscene = Gamestate.new()
 
 local stuff = {}
 local opacityTween
+local ypos_c0_step
+local cutscene_p0_ypos
 local cutscene_p1_xpos
 local cutscene_p2_xpos
 local cutscene_p3_xpos
@@ -25,43 +27,61 @@ local change_scene_once
 local cutscene_active 
 local waiter_last
 
+-- only say fire ONCE
+local has_said_fire_once
+function sayFire()
+  if has_said_fire_once ~= true then
+    Sfx.GGJ18_cutscene_sniper_fire:play()
+  end
+  has_said_fire_once = true
+end
+
 function Cutscene:enter()
-  cutscene_active = true
+  has_said_fire_once = false
   opacityTween = 0
-  xpos_step = 16
-  opacity_step = 8
+  xpos_step = 48
+  opacity_step = 48
+  ypos_c0_step = 32
   change_scene_once = true
   waiter_last = 0
+  cutscene_p0_ypos = 1*GAME_HEIGHT
   cutscene_p1_xpos = 2*GAME_WIDTH
   cutscene_p2_xpos = 2*GAME_WIDTH
   cutscene_p3_xpos = 2*GAME_WIDTH
-  Sfx.GGJ18_cutscene_sniper_fire:play()
 end
 
 function Cutscene:update(dt)
-  if cutscene_active ~= true then
-    return false
+  if cutscene_p0_ypos <= 0 then
+    cutscene_p0_ypos = 0
+  else
+    cutscene_p0_ypos = cutscene_p0_ypos - ypos_c0_step
   end
 
   if opacityTween<256-opacity_step then
     opacityTween = opacityTween + opacity_step
   else 
+    if cutscene_p1_xpos <= GAME_WIDTH then
+      sayFire()
+    end
+
     if cutscene_p1_xpos > xpos_step-1 then 
       cutscene_p1_xpos = cutscene_p1_xpos - xpos_step
     else
+      cutscene_p1_xpos = 0
       if cutscene_p2_xpos > xpos_step-1 then 
         cutscene_p2_xpos = cutscene_p2_xpos - xpos_step
       else
+        cutscene_p2_xpos = 0
         if cutscene_p3_xpos > xpos_step-1 then 
           cutscene_p3_xpos = cutscene_p3_xpos - xpos_step
         else
+          cutscene_p3_xpos = 0
           if waiter_last < 32 then
             waiter_last = waiter_last +1
           else
             goToGameState('Game')
             if change_scene_once then 
               change_scene_once = false
-              cutscene_active = false
             end
           end
 
@@ -82,16 +102,15 @@ end
 
 
 local function drawFn2()
-  if cutscene_active ~= true then
-    return false
-  end
     -- <Your drawing logic goes here.>
     -- love.graphics.draw(padLeft,a,2)
     love.graphics.setShader()
     cnv = love.graphics.newCanvas(GAME_WIDTH,GAME_HEIGHT)
     cnv:renderTo(function()
+      love.graphics.setColor(255,255,255,255)
+      drawLastStateScreenshot()
       love.graphics.setColor(255,255,255,opacityTween)
-      love.graphics.draw(Image.cutscene_01)
+      love.graphics.draw(Image.cutscene_01,0,cutscene_p0_ypos)
       love.graphics.draw(Image.cutscene_01_p1,cutscene_p1_xpos)
       love.graphics.draw(Image.cutscene_01_p2,cutscene_p2_xpos)
       love.graphics.draw(Image.cutscene_01_p3,cutscene_p3_xpos)
@@ -108,11 +127,6 @@ local function drawFn2()
 end
 
 function Cutscene:draw()
-  if cutscene_active ~= true then
-    return false
-  end
-
-
     screen:draw(drawFn2) -- Additional arguments will be passed to drawFn.
 
 

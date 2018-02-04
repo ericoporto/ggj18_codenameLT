@@ -32,8 +32,9 @@ Object = requireLibrary("classic")
 screen = nil
 class_commons = nil
 common = nil
-no_game_code = nil
+no_game_code = nil 
 
+game_locale = nil
 
 -- fonts
 font_16bfZX = nil
@@ -57,6 +58,11 @@ keys_pressed = {}
 keys_previousGamepad = {}
 
 local p1joystick = nil
+
+-- creating a global ternary if function
+function ternary ( cond , T , F )
+  if cond then return T else return F end
+end
 
 -- adding a function to remove keys from tables
 function table.removekey(table, key)
@@ -106,7 +112,29 @@ function rnd()
 	return math.random()
 end
 
+local screenShotFromLastState
+
+local function saveScreenShotFromLastState()
+  local scrn = love.graphics.newScreenshot()
+	local canvas = love.graphics.newCanvas(GAME_WIDTH,GAME_HEIGHT) -- make a canvas that is the proper dimensions
+	canvas:renderTo(function()
+		love.graphics.setColor(255,255,255,255) -- set colour to white, i.e. draw normally
+		love.graphics.draw(love.graphics.newImage(scrn),0,0, -- draw the screenshot at 0,0
+		0, -- 0 rotation
+		canvas:getWidth() / love.graphics.getWidth(), -- x scale
+		canvas:getHeight() / love.graphics.getHeight() -- y scale
+		)
+  end)
+  -- this resizes the canvas get's it's data and put's in an image
+  screenShotFromLastState = love.graphics.newImage(canvas:newImageData())
+end
+
+function drawLastStateScreenshot()
+  love.graphics.draw(screenShotFromLastState)
+end
+
 function goToGameState(stateString)
+  saveScreenShotFromLastState()
   if stateString=='Game' then
     Gamestate.switch(Game)
   elseif stateString=='Cutscene' then
@@ -115,6 +143,8 @@ function goToGameState(stateString)
     Gamestate.switch(StartScreen)
   elseif stateString=='CreditsState' then
     Gamestate.switch(CreditsState)
+  elseif stateString=='SplashScreen' then
+    Gamestate.switch(SplashScreen)
   end
 
 end
@@ -168,13 +198,24 @@ end
 
 -- Initialization
 function love.load(arg)
+	for k, v in ipairs(arg) do
+		-- mute music
+		if (v == '-nomusic') then
+			Music.ggj18_ambient:setVolume(0)
+    		Music.ggj18_theme:setVolume(0)
+		end
+		print(k .. ' ' .. v)
+	end
 	math.randomseed(os.time())
 	love.graphics.setDefaultFilter("nearest", "nearest")
 	-- love.mouse.setVisible(false)
     -- print "Require Sources:"
 	recursiveRequire("src")
 	Gamestate.registerEvents()
-	Gamestate.switch(StartScreen)
+  Gamestate.switch(SplashScreen)
+  
+  -- set locale
+  game_locale = 'en'
 
   -- Set nearest-neighbour scaling. Calling this is optional.
   Terebi.initializeLoveDefaults()

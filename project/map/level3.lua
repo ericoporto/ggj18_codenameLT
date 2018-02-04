@@ -709,72 +709,6 @@ return {
           properties = {}
         },
         {
-          id = 12,
-          name = "Player",
-          type = "",
-          shape = "rectangle",
-          x = 17.8334,
-          y = 183,
-          width = 16,
-          height = 16,
-          rotation = 0,
-          gid = 180,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 13,
-          name = "triggerDialog",
-          type = "",
-          shape = "rectangle",
-          x = 36,
-          y = 264,
-          width = 74.6667,
-          height = 114.667,
-          rotation = 0,
-          gid = 219,
-          visible = true,
-          properties = {
-            ["ennemyType"] = "idle",
-            ["id"] = "1",
-            ["sound"] = "phone",
-            ["spawnEnnemy"] = "1",
-            ["type"] = "trigger"
-          }
-        },
-        {
-          id = 14,
-          name = "ennemySpawner",
-          type = "",
-          shape = "rectangle",
-          x = 83,
-          y = 540,
-          width = 16,
-          height = 16,
-          rotation = 0,
-          gid = 220,
-          visible = true,
-          properties = {
-            ["id"] = 1
-          }
-        },
-        {
-          id = 15,
-          name = "ennemySpawner",
-          type = "",
-          shape = "rectangle",
-          x = 332,
-          y = 129,
-          width = 16,
-          height = 16,
-          rotation = 0,
-          gid = 220,
-          visible = true,
-          properties = {
-            ["id"] = 1
-          }
-        },
-        {
           id = 16,
           name = "",
           type = "",
@@ -829,52 +763,6 @@ return {
           gid = 977,
           visible = true,
           properties = {}
-        },
-        {
-          id = 23,
-          name = "ennemySpawner",
-          type = "",
-          shape = "rectangle",
-          x = 162.667,
-          y = 540,
-          width = 16,
-          height = 16,
-          rotation = 0,
-          gid = 220,
-          visible = true,
-          properties = {
-            ["id"] = 1
-          }
-        },
-        {
-          id = 24,
-          name = "itemSpawner",
-          type = "",
-          shape = "point",
-          x = 97.3333,
-          y = 190,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["item"] = "radio"
-          }
-        },
-        {
-          id = 25,
-          name = "itemSpawner",
-          type = "",
-          shape = "point",
-          x = 498,
-          y = 98,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["item"] = "radio"
-          }
         },
         {
           id = 26,
@@ -951,7 +839,7 @@ return {
     {
       type = "objectgroup",
       name = "objLayer",
-      visible = true,
+      visible = false,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
@@ -985,6 +873,115 @@ return {
           properties = {
             ["item"] = "secret"
           }
+        },
+        {
+          id = 25,
+          name = "itemSpawner",
+          type = "",
+          shape = "point",
+          x = 498,
+          y = 98,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["item"] = "radio"
+          }
+        },
+        {
+          id = 24,
+          name = "itemSpawner",
+          type = "",
+          shape = "point",
+          x = 97.3333,
+          y = 190,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["item"] = "radio"
+          }
+        },
+        {
+          id = 23,
+          name = "ennemySpawner",
+          type = "",
+          shape = "rectangle",
+          x = 162.667,
+          y = 540,
+          width = 16,
+          height = 16,
+          rotation = 0,
+          gid = 220,
+          visible = true,
+          properties = {
+            ["id"] = 1
+          }
+        },
+        {
+          id = 15,
+          name = "ennemySpawner",
+          type = "",
+          shape = "rectangle",
+          x = 332,
+          y = 129,
+          width = 16,
+          height = 16,
+          rotation = 0,
+          gid = 220,
+          visible = true,
+          properties = {
+            ["id"] = 1
+          }
+        },
+        {
+          id = 14,
+          name = "ennemySpawner",
+          type = "",
+          shape = "rectangle",
+          x = 83,
+          y = 540,
+          width = 16,
+          height = 16,
+          rotation = 0,
+          gid = 220,
+          visible = true,
+          properties = {
+            ["id"] = 1
+          }
+        },
+        {
+          id = 13,
+          name = "triggerDialog",
+          type = "",
+          shape = "rectangle",
+          x = 36,
+          y = 264,
+          width = 74.6667,
+          height = 114.667,
+          rotation = 0,
+          gid = 219,
+          visible = true,
+          properties = {
+            ["runLuaChain"] = "SpawnEnemy(1)",
+            ["type"] = "trigger"
+          }
+        },
+        {
+          id = 12,
+          name = "Player",
+          type = "",
+          shape = "rectangle",
+          x = 17.8334,
+          y = 183,
+          width = 16,
+          height = 16,
+          rotation = 0,
+          gid = 180,
+          visible = true,
+          properties = {}
         }
       }
     },

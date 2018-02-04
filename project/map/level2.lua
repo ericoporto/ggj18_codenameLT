@@ -1274,36 +1274,6 @@ return {
           gid = 891,
           visible = true,
           properties = {}
-        },
-        {
-          id = 138,
-          name = "itemSpawner",
-          type = "",
-          shape = "point",
-          x = 578.667,
-          y = 354,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["item"] = "secret"
-          }
-        },
-        {
-          id = 139,
-          name = "itemSpawner",
-          type = "",
-          shape = "point",
-          x = 312,
-          y = 106,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["item"] = "radio"
-          }
         }
       }
     },
@@ -1322,20 +1292,15 @@ return {
           name = "triggerDialog",
           type = "",
           shape = "rectangle",
-          x = 194.666,
-          y = 441,
-          width = 16,
-          height = 16,
+          x = 193.416,
+          y = 446.75,
+          width = 26.25,
+          height = 30,
           rotation = 0,
           gid = 219,
           visible = true,
           properties = {
-            ["ennemyType"] = "idle",
-            ["id"] = "1",
-            ["msg"] = "phone rings.. &\n-Hello?! &\n-They know about the virus project! & \n-Wait, who are you! & \n-You have to go. There no time to explain! Go to the north on the copy machine room!",
-            ["msgfr"] = "telephone sone.. &\n-Allo?! &\n-Ils savent sur le projet virus! & \n-Attendez, qui est-vouz?! & \n-Tu doit bouger, pas temps d'expliquer! Prends le vers nords, la salle de photocopies.",
-            ["sound"] = "phone",
-            ["spawnEnnemy"] = "1",
+            ["runLuaChain"] = "Say('phone rings..'),\nSay('-Hello?!'),\nSay('They know about the virus project!'),\nSay('Wait, who are you!'),\nSay('You have to go. There no time to explain! Go on the copy machine room to the north!'),\ncloseSay(),\nSpawnEnemy(1)",
             ["type"] = "trigger"
           }
         },
@@ -1366,11 +1331,7 @@ return {
           gid = 219,
           visible = true,
           properties = {
-            ["ennemyType"] = "idle",
-            ["id"] = "2",
-            ["msg"] = "Fax.. incoming.. &\nBe carefull all comunications are hacked! Infiltred agents are there to kill you! & \nAvoid them! I 'll try to guide your path to the next floor.",
-            ["msgfr"] = "Toute les comunications sont sous ecoute, ces agents veule ta peau. Je vais essayer de guider tes pas! Je dois..",
-            ["spawnEnnemy"] = 0,
+            ["runLuaChain"] = "Say('Fax.. incoming..'),\nSay('Be carefull all comunications are hacked! Infiltred agents are there to kill you!'),\nSay('Avoid them! I will try to guide your path to the next floor.'),\ncloseSay(),\nSpawnEnemy(0)\n",
             ["type"] = "trigger"
           }
         },
@@ -1428,7 +1389,7 @@ return {
           type = "",
           shape = "rectangle",
           x = 241.5,
-          y = 544.167,
+          y = 543.167,
           width = 16,
           height = 16,
           rotation = 0,
@@ -1460,7 +1421,7 @@ return {
           type = "",
           shape = "rectangle",
           x = 311.5,
-          y = 543.667,
+          y = 542.667,
           width = 16,
           height = 16,
           rotation = 0,
@@ -1483,11 +1444,7 @@ return {
           gid = 219,
           visible = true,
           properties = {
-            ["ennemyType"] = "patrol",
-            ["id"] = "3",
-            ["msg"] = "Err I've found a radio here .. oh that's convenient.. & \n-Hello, Allo, .. & \n-I'm here Susan! & \n-You know my name? who are you? & \n-I'm special agent Linda.. & \n Hang on. When I say run! Take the corridor,and  go east!!!",
-            ["msgfr"] = "Err bah ça alors j'ai trouve  .. tres convenient.. & \n-Hello, Allo, .. & \n-Je suis la Susan! & \n-Tu connais mon nom? Qui c'est? & \n-Je suis agent speciale Linda.. & \n Un momment.. Prepare toi e courrez! Prends le couloir a droite!!!",
-            ["spawnEnnemy"] = 2,
+            ["runLuaChain"] = "Say('Err I have found a radio here .. oh that\\'s convenient..'),\nSay('-Hello, Allo, ..'),\nSay('-I\\'m here Susan!'),\nSay('-You know my name? who are you?'),\nSay('-I\\'m special agent Linda.. '),\nSay(' Hang on. When I say run! Take the corridor,and  go east!!!'),\ncloseSay(),\nSpawnEnemy(2)\n",
             ["type"] = "trigger"
           }
         },
@@ -1527,19 +1484,15 @@ return {
           name = "triggerDialog",
           type = "",
           shape = "rectangle",
-          x = 511.333,
-          y = 120,
-          width = 16,
-          height = 16,
+          x = 512.333,
+          y = 170.5,
+          width = 47,
+          height = 113,
           rotation = 0,
           gid = 219,
           visible = true,
           properties = {
-            ["ennemyType"] = "idle",
-            ["id"] = "4",
-            ["msg"] = "-Use the action button when enemies are close!",
-            ["msgfr"] = "-Utilizer le button d'action quands tu est pres des ennemis.",
-            ["spawnEnnemy"] = 3,
+            ["runLuaChain"] = "Say('-Use the action button when enemies are close!'),\ncloseSay(),\nSpawnEnemy(3)",
             ["type"] = "trigger"
           }
         },
@@ -1622,19 +1575,17 @@ return {
         {
           id = 125,
           name = "triggerDialog",
-          type = "",
+          type = "trigger",
           shape = "rectangle",
           x = 1013.38,
           y = 391,
-          width = 16,
+          width = 48.6667,
           height = 16,
           rotation = 0,
           gid = 219,
           visible = true,
           properties = {
-            ["ennemyType"] = "patrol",
-            ["id"] = "5",
-            ["spawnEnnemy"] = 4,
+            ["runLuaChain"] = "SpawnEnemy(5)",
             ["type"] = "trigger"
           }
         },
@@ -1715,6 +1666,36 @@ return {
           visible = true,
           properties = {
             ["id"] = 3
+          }
+        },
+        {
+          id = 139,
+          name = "itemSpawner",
+          type = "",
+          shape = "point",
+          x = 312,
+          y = 106,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["item"] = "radio"
+          }
+        },
+        {
+          id = 138,
+          name = "itemSpawner",
+          type = "",
+          shape = "point",
+          x = 578.667,
+          y = 354,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["item"] = "secret"
           }
         }
       }

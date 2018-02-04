@@ -155,49 +155,29 @@
   <object id="133" name="arquivo" gid="881" x="790" y="135" width="192" height="192"/>
   <object id="134" name="arquivo" gid="881" x="809.5" y="135" width="192" height="192"/>
   <object id="135" name="papeis" gid="891" x="1094" y="579" width="192" height="192"/>
-  <object id="138" name="itemSpawner" x="578.667" y="354">
-   <properties>
-    <property name="item" value="secret"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="139" name="itemSpawner" x="312" y="106">
-   <properties>
-    <property name="item" value="radio"/>
-   </properties>
-   <point/>
-  </object>
  </objectgroup>
  <objectgroup name="objLayer" visible="0">
-  <object id="27" name="triggerDialog" gid="219" x="194.666" y="441" width="16" height="16">
+  <object id="27" name="triggerDialog" gid="219" x="193.416" y="446.75" width="26.25" height="30">
    <properties>
-    <property name="ennemyType" value="idle"/>
-    <property name="id" value="1"/>
-    <property name="msg">phone rings.. &amp;
--Hello?! &amp;
--They know about the virus project! &amp; 
--Wait, who are you! &amp; 
--You have to go. There no time to explain! Go to the north on the copy machine room!</property>
-    <property name="msgfr">telephone sone.. &amp;
--Allo?! &amp;
--Ils savent sur le projet virus! &amp; 
--Attendez, qui est-vouz?! &amp; 
--Tu doit bouger, pas temps d'expliquer! Prends le vers nords, la salle de photocopies.</property>
-    <property name="sound" value="phone"/>
-    <property name="spawnEnnemy" value="1"/>
+    <property name="runLuaChain">Say('phone rings..'),
+Say('-Hello?!'),
+Say('They know about the virus project!'),
+Say('Wait, who are you!'),
+Say('You have to go. There no time to explain! Go on the copy machine room to the north!'),
+closeSay(),
+SpawnEnemy(1)</property>
     <property name="type" value="trigger"/>
    </properties>
   </object>
   <object id="29" name="Player" gid="180" x="96" y="432" width="16" height="16"/>
   <object id="53" name="triggerDialog" gid="219" x="142.5" y="255" width="16" height="16">
    <properties>
-    <property name="ennemyType" value="idle"/>
-    <property name="id" value="2"/>
-    <property name="msg">Fax.. incoming.. &amp;
-Be carefull all comunications are hacked! Infiltred agents are there to kill you! &amp; 
-Avoid them! I 'll try to guide your path to the next floor.</property>
-    <property name="msgfr" value="Toute les comunications sont sous ecoute, ces agents veule ta peau. Je vais essayer de guider tes pas! Je dois.."/>
-    <property name="spawnEnnemy" type="int" value="0"/>
+    <property name="runLuaChain">Say('Fax.. incoming..'),
+Say('Be carefull all comunications are hacked! Infiltred agents are there to kill you!'),
+Say('Avoid them! I will try to guide your path to the next floor.'),
+closeSay(),
+SpawnEnemy(0)
+</property>
     <property name="type" value="trigger"/>
    </properties>
   </object>
@@ -216,7 +196,7 @@ Avoid them! I 'll try to guide your path to the next floor.</property>
     <property name="id" type="int" value="0"/>
    </properties>
   </object>
-  <object id="59" name="ennemySpawner" gid="220" x="241.5" y="544.167" width="16" height="16">
+  <object id="59" name="ennemySpawner" gid="220" x="241.5" y="543.167" width="16" height="16">
    <properties>
     <property name="id" type="int" value="1"/>
    </properties>
@@ -226,28 +206,22 @@ Avoid them! I 'll try to guide your path to the next floor.</property>
     <property name="id" type="int" value="1"/>
    </properties>
   </object>
-  <object id="61" name="ennemySpawner" gid="220" x="311.5" y="543.667" width="16" height="16">
+  <object id="61" name="ennemySpawner" gid="220" x="311.5" y="542.667" width="16" height="16">
    <properties>
     <property name="id" type="int" value="1"/>
    </properties>
   </object>
   <object id="62" name="triggerDialog" gid="219" x="304.333" y="80.0833" width="16" height="16">
    <properties>
-    <property name="ennemyType" value="patrol"/>
-    <property name="id" value="3"/>
-    <property name="msg">Err I've found a radio here .. oh that's convenient.. &amp; 
--Hello, Allo, .. &amp; 
--I'm here Susan! &amp; 
--You know my name? who are you? &amp; 
--I'm special agent Linda.. &amp; 
- Hang on. When I say run! Take the corridor,and  go east!!!</property>
-    <property name="msgfr">Err bah ça alors j'ai trouve  .. tres convenient.. &amp; 
--Hello, Allo, .. &amp; 
--Je suis la Susan! &amp; 
--Tu connais mon nom? Qui c'est? &amp; 
--Je suis agent speciale Linda.. &amp; 
- Un momment.. Prepare toi e courrez! Prends le couloir a droite!!!</property>
-    <property name="spawnEnnemy" type="int" value="2"/>
+    <property name="runLuaChain">Say('Err I have found a radio here .. oh that\'s convenient..'),
+Say('-Hello, Allo, ..'),
+Say('-I\'m here Susan!'),
+Say('-You know my name? who are you?'),
+Say('-I\'m special agent Linda.. '),
+Say(' Hang on. When I say run! Take the corridor,and  go east!!!'),
+closeSay(),
+SpawnEnemy(2)
+</property>
     <property name="type" value="trigger"/>
    </properties>
   </object>
@@ -262,13 +236,11 @@ Avoid them! I 'll try to guide your path to the next floor.</property>
     <property name="id" type="int" value="2"/>
    </properties>
   </object>
-  <object id="110" name="triggerDialog" gid="219" x="511.333" y="120" width="16" height="16">
+  <object id="110" name="triggerDialog" gid="219" x="512.333" y="170.5" width="47" height="113">
    <properties>
-    <property name="ennemyType" value="idle"/>
-    <property name="id" value="4"/>
-    <property name="msg" value="-Use the action button when enemies are close!"/>
-    <property name="msgfr" value="-Utilizer le button d'action quands tu est pres des ennemis."/>
-    <property name="spawnEnnemy" type="int" value="3"/>
+    <property name="runLuaChain">Say('-Use the action button when enemies are close!'),
+closeSay(),
+SpawnEnemy(3)</property>
     <property name="type" value="trigger"/>
    </properties>
   </object>
@@ -296,11 +268,9 @@ Avoid them! I 'll try to guide your path to the next floor.</property>
    </properties>
    <point/>
   </object>
-  <object id="125" name="triggerDialog" gid="219" x="1013.38" y="391" width="16" height="16">
+  <object id="125" name="triggerDialog" type="trigger" gid="219" x="1013.38" y="391" width="48.6667" height="16">
    <properties>
-    <property name="ennemyType" value="patrol"/>
-    <property name="id" value="5"/>
-    <property name="spawnEnnemy" type="int" value="4"/>
+    <property name="runLuaChain" value="SpawnEnemy(5)"/>
     <property name="type" value="trigger"/>
    </properties>
   </object>
@@ -329,6 +299,18 @@ Avoid them! I 'll try to guide your path to the next floor.</property>
    <properties>
     <property name="id" type="int" value="3"/>
    </properties>
+  </object>
+  <object id="139" name="itemSpawner" x="312" y="106">
+   <properties>
+    <property name="item" value="radio"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="138" name="itemSpawner" x="578.667" y="354">
+   <properties>
+    <property name="item" value="secret"/>
+   </properties>
+   <point/>
   </object>
  </objectgroup>
  <layer name="tileLayerWallsFG" width="80" height="45">

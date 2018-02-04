@@ -56,13 +56,13 @@
   <object id="15" gid="884" x="-49.6667" y="200.667" width="192" height="192"/>
  </objectgroup>
  <objectgroup name="objLayer" visible="0">
-  <object id="5" name="triggerDialog" gid="219" x="58.5" y="195.166" width="65.3333" height="88.6667">
+  <object id="5" name="triggerEvent" type="trigger" gid="219" x="58.5" y="195.166" width="65.3333" height="88.6667">
    <properties>
-    <property name="ennemyType" value="idle"/>
-    <property name="id" value="0"/>
-    <property name="msg" value="-Hey! &amp; -They know about your project! You have to go! Avoid The agents!"/>
-    <property name="msgfr" value="-Ils savent sur LE projet! Evitez les agents! Vaszyy!!!"/>
-    <property name="spawnEnnemy" type="int" value="0"/>
+    <property name="runLuaChain">Say('-Hey!'),
+Say('-They know about your project! You have to go! Avoid The agents!'),
+closeSay(),
+SpawnEnemy(0)
+</property>
     <property name="type" value="trigger"/>
    </properties>
   </object>

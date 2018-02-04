@@ -523,7 +523,9 @@ return {
       opacity = 1,
       offsetx = 0,
       offsety = 0,
-      properties = {},
+      properties = {
+        ["collidable"] = "true"
+      },
       encoding = "lua",
       data = {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -578,22 +580,18 @@ return {
         },
         {
           id = 2,
-          name = "triggerDialog",
+          name = "triggerEvent",
           type = "",
           shape = "rectangle",
-          x = 399.667,
-          y = 236.333,
-          width = 33,
-          height = 32.6667,
+          x = 398.667,
+          y = 253.833,
+          width = 34,
+          height = 50.1667,
           rotation = 0,
           gid = 1126,
           visible = true,
           properties = {
-            ["ennemyType"] = "idle",
-            ["id"] = "1",
-            ["msg"] = "-Agent Linda: We would not have been able to save everyone from the virus LT03 if it was not for your bravery. & \nThis disease is affecting terribly the whole country and the BRND Pharmaceutics wanted to profit from this disaster. & \nBut not anymore, thanks to you. Now the secret formula behind the antivirus is out for the whole world to use!!!",
-            ["msgfr"] = "-Agent Linda: Nous n'aurions pas pu sauver tout le monde du virus LT03 si ce n'etait de bravoure. & Cette maladie affecte terriblement tout le pays et la BRND Pharmaceutics a voulu profiter de cette catastrophe. &\nMais plus maintenant, grâce à vous. La formule secrete derriere l'antivirus est disponible pour le monde entier à utiliser !!!",
-            ["spawnEnnemy"] = "0",
+            ["runLuaChain"] = "Say('Agent Linda: We would not have been able to save everyone from the virus LT03 if it was not for your bravery.'),\nSay('This disease is affecting terribly the whole country and the BRND Pharmaceutics wanted to profit from this disaster.'),\nSay('But not anymore, thanks to you. Now the secret formula behind the antivirus is out for the whole world to use!!!'),\nEndGame()",
             ["type"] = "trigger"
           }
         }

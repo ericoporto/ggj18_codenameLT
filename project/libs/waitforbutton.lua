@@ -10,17 +10,18 @@ end
 
 
 function WaitForButton:init(checkbtnfunction,callback)
-  --print(callback)
-  --print(checkbtnfunction)
   WaitForButton = {
 
     checkf = checkbtnfunction,
     callback = callback,
     updater = function (dt)
-        --print('is updater')
         if WaitForButton.checkf ~= nil and WaitForButton.callback ~= nil then
           if WaitForButton.checkf() then
-            WaitForButton.callback()
+            
+            -- by removing the callback, we guarantee it will be called only once
+            local call_once = WaitForButton.callback
+            WaitForButton.callback = nil
+            call_once()
           end
         end
     end,
